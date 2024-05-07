@@ -1,0 +1,10 @@
+services:
+  app:
+    image: node:20-slim
+    stdin_open: true
+    tty: true
+    working_dir: /app
+    volumes:
+      - ~/study/lobe-chat:/app
+    ports:
+      - 127.0.0.1:3210:3210

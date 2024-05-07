@@ -1,4 +1,5 @@
 import { Metadata } from 'next';
+import { useEffect } from 'react';
 
 import { getCanonicalUrl } from '@/const/url';
 
