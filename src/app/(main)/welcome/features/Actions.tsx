@@ -5,13 +5,25 @@ import { Button } from 'antd';
 import { SendHorizonal } from 'lucide-react';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
-import { memo } from 'react';
+import { memo, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Flexbox } from 'react-layout-kit';
+
+import LoginPage from '@/components/login';
 
 const Actions = memo<{ mobile?: boolean }>(({ mobile }) => {
   const { t } = useTranslation('welcome');
   const router = useRouter();
+
+  const [loginState] = useState(false);
+  const [showLoginState, setShowLoginState] = useState(false);
+  const toChatPage = () => {
+    if (loginState) {
+      router.push('/chat');
+    } else {
+      setShowLoginState(true);
+    }
+  };
 
   return (
     <Flexbox gap={16} horizontal={!mobile} justify={'center'} width={'100%'} wrap={'wrap'}>
@@ -22,7 +34,7 @@ const Actions = memo<{ mobile?: boolean }>(({ mobile }) => {
       </Link>
       <Button
         block={mobile}
-        onClick={() => router.push('/chat')}
+        onClick={toChatPage}
         size={'large'}
         style={{ minWidth: 160 }}
         type={'primary'}
@@ -32,6 +44,10 @@ const Actions = memo<{ mobile?: boolean }>(({ mobile }) => {
           <Icon icon={SendHorizonal} />
         </Flexbox>
       </Button>
+
+      {showLoginState ? (
+        <LoginPage showLoginModal={showLoginState} close={() => setShowLoginState(false)} />
+      ) : undefined}
     </Flexbox>
   );
 });

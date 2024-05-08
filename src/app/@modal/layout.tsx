@@ -4,6 +4,7 @@ import { Modal } from '@lobehub/ui';
 import { useRouter } from 'next/navigation';
 import { PropsWithChildren, memo, useState } from 'react';
 
+
 const SessionSettingsModal = memo<PropsWithChildren>(({ children }) => {
   const [open, setOpen] = useState(true);
   const router = useRouter();
