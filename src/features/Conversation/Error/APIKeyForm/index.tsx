@@ -54,12 +54,13 @@ const APIKeyForm = memo<APIKeyFormProps>(({ id, provider }) => {
       {provider === ModelProvider.Bedrock ? (
         <BedrockForm />
       ) : (
-        <ProviderApiKeyForm
-          apiKeyPlaceholder={apiKeyPlaceholder}
-          avatar={<ProviderAvatar provider={provider as ModelProvider} />}
-          provider={provider as GlobalLLMProviderKey}
-          showEndpoint={provider === ModelProvider.OpenAI}
-        />
+        // <ProviderApiKeyForm
+        //   apiKeyPlaceholder={apiKeyPlaceholder}
+        //   avatar={<ProviderAvatar provider={provider as ModelProvider} />}
+        //   provider={provider as GlobalLLMProviderKey}
+        //   showEndpoint={provider === ModelProvider.OpenAI}
+          // />
+          <></>
       )}
       <Flexbox gap={12} width={'100%'}>
         <Button
