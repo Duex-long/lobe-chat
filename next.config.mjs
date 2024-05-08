@@ -7,6 +7,7 @@ const buildWithDocker = process.env.DOCKER === 'true';
 
 // if you need to proxy the api endpoint to remote server
 const API_PROXY_ENDPOINT = process.env.API_PROXY_ENDPOINT || '';
+const OPENAI_PROXY_ENDPOINT = process.env.OPENAI_PROXY_ENDPOINT || '';
 
 const basePath = process.env.NEXT_PUBLIC_BASE_PATH;
 
@@ -41,6 +42,9 @@ const nextConfig = {
     // due to google api not work correct in some countries
     // we need a proxy to bypass the restriction
     { source: '/api/chat/google', destination: `${API_PROXY_ENDPOINT}/api/chat/google` },
+    {
+      source: '/api/chat/openai', destination: `${OPENAI_PROXY_ENDPOINT}/api/chat/openai`
+    }
   ],
   reactStrictMode: true,
 
