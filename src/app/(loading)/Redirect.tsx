@@ -7,7 +7,7 @@ import { memo, useEffect } from 'react';
 
 import { messageService } from '@/services/message';
 import { sessionService } from '@/services/session';
-import { checkLogin, useLogin } from '@/utils/login/token';
+import { checkLogin } from '@/utils/login/token';
 
 
 const checkHasConversation = async () => {
@@ -24,13 +24,12 @@ const checkHasConversation = async () => {
 
 const Redirect = memo(() => {
   const router = useRouter();
-  // useLogin();
 
   useEffect(() => {
     checkHasConversation()
       .then(() => checkLogin())
       .then((hasData) => {
-        console.log(hasData, 'hasdata');
+
         if (hasData) {
           router.replace('/chat');
         } else {

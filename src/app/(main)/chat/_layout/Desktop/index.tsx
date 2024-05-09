@@ -1,3 +1,5 @@
+'use client';
+
 import { Flexbox } from 'react-layout-kit';
 
 import { useLogin } from '@/utils/login/token';
@@ -6,6 +8,7 @@ import { LayoutProps } from '../type';
 import ResponsiveSessionList from './SessionList';
 
 const Layout = ({ children }: LayoutProps) => {
+  useLogin();
   return (
     <>
       <ResponsiveSessionList />

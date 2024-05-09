@@ -10,7 +10,6 @@ import Analytics from '@/components/Analytics';
 import { DEFAULT_LANG, LOBE_LOCALE_COOKIE } from '@/const/locale';
 import AuthProvider from '@/layout/AuthProvider';
 import GlobalProvider from '@/layout/GlobalProvider';
-import { useLogin } from '@/utils/login/token';
 import { isMobileDevice } from '@/utils/responsive';
 
 type RootLayoutProps = {
