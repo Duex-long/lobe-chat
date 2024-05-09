@@ -18,7 +18,7 @@ const Layout = memo<LayoutProps>(({ children }) => {
   const isPWA = useIsPWA();
   const theme = useTheme();
 
-  // useLogin();
+  useLogin();
   return (
     <Flexbox
       height={'100%'}
