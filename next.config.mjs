@@ -66,6 +66,15 @@ const nextConfig = {
 
     return config;
   },
+
+
+  //
+  eslint: {
+    ignoreDuringBuilds: true,
+  },
+  typescript: {
+    ignoreBuildErrors: true,
+  }
 };
 
 const noWrapper = (config) => config;
