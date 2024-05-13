@@ -29,6 +29,7 @@ const nextConfig = {
     webVitalsAttribution: ['CLS', 'LCP'],
   },
 
+  // output: buildWithDocker ? 'standalone' : undefined,
   output: buildWithDocker ? 'standalone' : undefined,
 
   redirects: async () => [
@@ -43,7 +44,10 @@ const nextConfig = {
     // we need a proxy to bypass the restriction
     { source: '/api/chat/google', destination: `${API_PROXY_ENDPOINT}/api/chat/google` },
     {
-      source: '/api/chat/openai', destination: `${OPENAI_PROXY_ENDPOINT}/api/chat/openai`
+      source: '/api/chat/openai', destination: `${OPENAI_PROXY_ENDPOINT}/api/openai`
+    },
+    {
+      source: '/gateway/:path*', destination: `${OPENAI_PROXY_ENDPOINT}/:path*`,
     }
   ],
   reactStrictMode: true,
@@ -66,7 +70,6 @@ const nextConfig = {
 
     return config;
   },
-
 
   //
   eslint: {
