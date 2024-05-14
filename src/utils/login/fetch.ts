@@ -1,6 +1,9 @@
 import CryptoJS from 'crypto-js';
 
+
+
 import { getToken, getUserId } from './token';
+
 
 const BASE_URL = '/gateway';
 
@@ -62,7 +65,7 @@ const getAuthorizationHeader = (method: string, options: { [x: string]: string }
   const secretId = getSecretId() || SECRET_ID;
   const secretKey = getSecretKey() || SECRET_KEY;
   const { canonicalQueryString, hashedRequestPayload, timestamp } = options;
-  const host = process.env.NEXT_PUBLIC_SERVER_HOST;
+  const host = new URL(process.env.OPENAI_PROXY_ENDPOINT || 'http://127.0.0.1:3333').host;
   console.log(host, 'host');
   const canonicalHeaders =
     'content-type:application/json; charset=utf-8\n' +

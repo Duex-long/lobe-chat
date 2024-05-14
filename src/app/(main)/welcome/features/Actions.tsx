@@ -5,17 +5,18 @@ import { Button } from 'antd';
 import { SendHorizonal } from 'lucide-react';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
-import { memo, useState } from 'react';
+import { memo, useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Flexbox } from 'react-layout-kit';
 
 import LoginPage from '@/components/login';
+import { checkLogin } from '@/utils/login/token';
 
 const Actions = memo<{ mobile?: boolean }>(({ mobile }) => {
   const { t } = useTranslation('welcome');
   const router = useRouter();
 
-  const [loginState] = useState(false);
+  const [loginState, setLoginState] = useState(false);
   const [showLoginState, setShowLoginState] = useState(false);
   const toChatPage = () => {
     if (loginState) {
@@ -24,6 +25,9 @@ const Actions = memo<{ mobile?: boolean }>(({ mobile }) => {
       setShowLoginState(true);
     }
   };
+  useEffect(() => {
+    checkLogin().then(setLoginState, () => setLoginState(false));
+  }, []);
 
   return (
     <Flexbox gap={16} horizontal={!mobile} justify={'center'} width={'100%'} wrap={'wrap'}>
