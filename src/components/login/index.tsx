@@ -4,13 +4,15 @@ import useMessage from 'antd/es/message/useMessage';
 import { memo, useState } from 'react';
 import { Flexbox } from 'react-layout-kit';
 
+
+
 import { setToken, setUserId, userLogin } from '@/utils/login/token';
 
 // const useStyles = createStyles(() => {});
 
 const baseInputWidth = { maxWidth: '320px' };
 
-const LoginPage = memo<{ showLoginModal: boolean; close: () => void }>(
+const LoginPage = memo<{ close: () => void; showLoginModal: boolean }>(
   ({ showLoginModal = false, close }) => {
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
@@ -44,6 +46,7 @@ const LoginPage = memo<{ showLoginModal: boolean; close: () => void }>(
       } finally {
         setPassword('');
         setLoadingState(false);
+        close();
       }
     };
     return (

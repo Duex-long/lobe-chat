@@ -9,8 +9,11 @@ import { memo, useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Flexbox } from 'react-layout-kit';
 
+
+
 import LoginPage from '@/components/login';
 import { checkLogin } from '@/utils/login/token';
+
 
 const Actions = memo<{ mobile?: boolean }>(({ mobile }) => {
   const { t } = useTranslation('welcome');
@@ -50,7 +53,7 @@ const Actions = memo<{ mobile?: boolean }>(({ mobile }) => {
       </Button>
 
       {showLoginState ? (
-        <LoginPage showLoginModal={showLoginState} close={() => setShowLoginState(false)} />
+        <LoginPage close={() => setShowLoginState(false)} showLoginModal={showLoginState} />
       ) : undefined}
     </Flexbox>
   );
